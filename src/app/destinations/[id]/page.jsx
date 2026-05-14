@@ -12,6 +12,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { EditModal } from "@/components/EditModal";
+import { DeleteAlert } from "@/components/DeleteAlert";
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -53,15 +54,8 @@ const DestinationDetailsPage = async ({ params }) => {
           <span>Back to Destinations</span>
         </Link>
         <div className="flex items-center gap-3">
-            <EditModal destination={destination}></EditModal>
-          <Button
-            variant="bordered"
-            color="danger"
-            startContent={<Trash2 size={16} />}
-            className="border-red-200 text-red-500 bg-white hover:bg-red-50"
-          >
-            Cancel
-          </Button>
+          <EditModal destination={destination}></EditModal>
+          <DeleteAlert destination={destination}></DeleteAlert>
         </div>
       </div>
 
