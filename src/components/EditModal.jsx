@@ -14,19 +14,22 @@ import {
 } from "@heroui/react";
 import { Trash2, Save, Pencil } from "lucide-react";
 
-export function EditModal({destination}) {
+export function EditModal({ destination }) {
   const handleDestination = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const destination = Object.fromEntries(formData.entries());
+    const destinationData = Object.fromEntries(formData.entries());
 
-    const res = await fetch(`http://localhost:1003/destination/${destination._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(destination),
-    });
+    const res = await fetch(
+      `http://localhost:1003/destination/${destination._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(destinationData),
+      }
+    );
     const data = await res.json();
     console.log(data);
   };
@@ -109,11 +112,17 @@ export function EditModal({destination}) {
                             <ListBox.Item id="Beach" textValue="Beach">
                               Beach <ListBox.ItemIndicator />
                             </ListBox.Item>
-                            <ListBox.Item id="Mountain" textValue="Mountain">
-                              Mountain <ListBox.ItemIndicator />
+                            <ListBox.Item id="Luxury" textValue="Luxury">
+                              Luxury <ListBox.ItemIndicator />
                             </ListBox.Item>
                             <ListBox.Item id="City" textValue="City">
                               City <ListBox.ItemIndicator />
+                            </ListBox.Item>
+                            <ListBox.Item id="Cultural" textValue="Cultural">
+                              Cultural <ListBox.ItemIndicator />
+                            </ListBox.Item>
+                            <ListBox.Item id="Adventure" textValue="Adventure">
+                              Adventure <ListBox.ItemIndicator />
                             </ListBox.Item>
                           </ListBox>
                         </Select.Popover>
