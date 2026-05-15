@@ -49,7 +49,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link className="no-underline" href="#">
+              <Link className="no-underline" href="/signup">
                 Sign Up
               </Link>
             </li>
