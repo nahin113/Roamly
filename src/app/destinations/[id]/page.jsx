@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button, Card } from "@heroui/react";
@@ -13,6 +12,8 @@ import {
 } from "lucide-react";
 import { EditModal } from "@/components/EditModal";
 import { DeleteAlert } from "@/components/DeleteAlert";
+import BookNowCard from "@/components/BookNowCard";
+
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -23,6 +24,7 @@ const DestinationDetailsPage = async ({ params }) => {
 
   // Fallback mock data to match your screenshot perfectly while you wire up your DB
   const mockData = {
+    id : destination?._id,
     imageUrl: destination?.imageUrl || "/placeholder-hero.jpg", // Ensure this exists or use external URL
     country: destination?.country || "Indonesia",
     title: destination?.destinationName || "Bali Paradise",
@@ -41,6 +43,7 @@ const DestinationDetailsPage = async ({ params }) => {
       "Sunrise trek to Mount Batur",
     ],
   };
+  
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 w-full bg-white min-h-screen">
@@ -130,51 +133,7 @@ const DestinationDetailsPage = async ({ params }) => {
         </div>
 
         {/* Right Column: Sticky Booking Widget */}
-        <div className="lg:col-span-1">
-          <Card className="p-6 sticky top-8 shadow-sm border border-gray-100 bg-white rounded-xl">
-            <div className="flex flex-col gap-6">
-              {/* Pricing */}
-              <div>
-                <p className="text-gray-500 font-medium">Starting from</p>
-                <div className="flex items-end gap-1 mt-1">
-                  <h2 className="text-4xl font-bold text-[#1FB6CD]">
-                    ${mockData.price}
-                  </h2>
-                </div>
-                <p className="text-gray-500 text-sm mt-1">per person</p>
-              </div>
-
-              {/* Mock Date Picker Input */}
-              <div className="w-full bg-gray-50 border border-gray-200 rounded-md p-3 text-gray-700 mt-2">
-                05/15/2026
-              </div>
-
-              {/* Book Button */}
-              <Button
-                className="w-full bg-[#1FB6CD] text-white font-medium text-lg py-6 rounded-md hover:bg-[#199db1]"
-                endContent={<ArrowRight size={18} />}
-              >
-                Book Now
-              </Button>
-
-              {/* Perks list */}
-              <div className="flex flex-col gap-3 mt-2">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <Check size={16} className="text-green-500 shrink-0" />
-                  <span>Free cancellation up to 7 days</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <Check size={16} className="text-green-500 shrink-0" />
-                  <span>Travel insurance included</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <Check size={16} className="text-green-500 shrink-0" />
-                  <span>24/7 customer support</span>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </div>
+          <BookNowCard mockData = {mockData}></BookNowCard>
       </div>
     </div>
   );

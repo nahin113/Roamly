@@ -9,7 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const DestinationCard = ({ destination }) => {
-    console.log(destination)
+
   return (
     <Card className="border-none bg-transparent shadow-none">
       {/* Image Section */}
