@@ -1,7 +1,15 @@
-import { Link, Button } from "@heroui/react";
+"use client";
+import { authClient } from "@/lib/auth-client";
+import { Link, Button, Avatar } from "@heroui/react";
 import Image from "next/image";
 
 const Navbar = () => {
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+
+  const handleLogout = async ()=> {
+    await authClient.signOut()
+  }
   return (
     <div>
       <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
@@ -43,16 +51,37 @@ const Navbar = () => {
                 Profile
               </Link>
             </li>
-            <li>
-              <Link className="no-underline" href="#">
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link className="no-underline" href="/signup">
-                Sign Up
-              </Link>
-            </li>
+            {user ? (
+              <>
+                <li>
+                  <Avatar>
+                    <Avatar.Image
+                      alt={user?.name.charAt(0)}
+                      src={user?.image}
+                    ></Avatar.Image>
+                    <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+                  </Avatar>
+                </li>
+                <li>
+                  <Button onClick={handleLogout} className="rounded-sm" variant="danger">
+                  Logout
+                  </Button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link className="no-underline" href="/login">
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link className="no-underline" href="/signup">
+                    Sign Up
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </header>
       </nav>
