@@ -55,7 +55,7 @@ const Navbar = () => {
               <>
                 <li>
                   <Avatar>
-                    <Avatar.Image
+                    <Avatar.Image referrerPolicy="no-referrer"
                       alt={user?.name.charAt(0)}
                       src={user?.image}
                     ></Avatar.Image>
