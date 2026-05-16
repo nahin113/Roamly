@@ -13,13 +13,25 @@ import {
 import { EditModal } from "@/components/EditModal";
 import { DeleteAlert } from "@/components/DeleteAlert";
 import BookNowCard from "@/components/BookNowCard";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
 
+  // get token
+  const { token } = await auth.api.getToken({
+    headers : await headers()
+  })
+  console.log(token)
+
   // Fetch data
-  const res = await fetch(`http://localhost:1003/destination/${id}`);
+  const res = await fetch(`http://localhost:1003/destination/${id}`, {
+    headers : {
+      authorization : `Bearer ${token}`
+    }
+  });
   const destination = await res.json();
 
   // Fallback mock data to match your screenshot perfectly while you wire up your DB

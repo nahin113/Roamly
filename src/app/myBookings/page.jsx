@@ -128,13 +128,3 @@ const MyBookingPage = async () => {
 };
 
 export default MyBookingPage;
-
-
-// Object;
-// departureDate: "2026-05-15T00:00:00.000Z";
-// destinationCountry: "Maldives";
-// destinationId: "6a061ead4898484c720536e6";
-// destinationImage: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80";
-// destinationName: "Maldives Overwater Luxury";
-// destinationPrice: "6999";
-// _id: "6a0753ae4f80e0fdad97d384";
