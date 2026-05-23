@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Roamly - Travel Booking Platform
+
+Roamly is a full stack travel booking web application where users can explore destinations, manage travel packages, and book trips seamlessly. It features Google OAuth, JWT secured routes, dynamic destination pages, and full CRUD functionality for travel packages.
+
+**Live Demo:** [roamly-lake.vercel.app](https://roamly-lake.vercel.app/)
+**Repository:** [github.com/nahin113/roamly](https://github.com/nahin113/roamly)
+
+---
+
+## 📸 Screenshot
+
+![Roamly Home Page](./screenshot.png)
+
+---
+
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| **Next.js 15** | React framework with App Router |
+| **MongoDB** | NoSQL database |
+| **Better Auth** | Authentication library |
+| **JWT** | Secure route protection |
+| **HeroUI** | UI component library |
+| **Tailwind CSS** | Utility-first styling |
+| **Google OAuth** | Social authentication |
+
+---
+
+## Key Features
+
+•  **Authentication** - Email/password signup & login + Google OAuth via Better Auth with JWT-secured routes
+•  **Destination Management** - Browse, add, edit, and delete travel packages with dynamic detail pages
+•  **Booking System** - Book destinations and cancel bookings with real time database updates
+•  **User Profile** - Edit profile with conditional navbar UI based on authentication state
+
+---
+
+## Dependencies
+
+| Package | Purpose |
+|---|---|
+| next | React framework with App Router |
+| react / `react-dom` | Core UI library |
+| better-auth | Authentication with Google OAuth |
+| mongoose | MongoDB object modeling |
+| @heroui/react | UI component library |
+| tailwindcss | Utility-first CSS styling |
+| jsonwebtoken | JWT route protection |
+```
+
+> **Note:** Check `package.json` for the exact versions used in this project.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- MongoDB URI (local or [MongoDB Atlas](https://www.mongodb.com/atlas))
+- Google OAuth credentials (from [Google Cloud Console](https://console.cloud.google.com))
+
+### Installation
+
+**1. Clone the repository**
+
+```bash
+git clone https://github.com/nahin113/roamly.git
+cd roamly
+```
+
+**2. Install dependencies**
+
+```bash
+npm install
+```
+
+**3. Set up environment variables**
+
+Create a `.env` file in the root directory:
+
+```env
+MONGODB_URI=your_mongodb_connection_string
+BETTER_AUTH_SECRET=your_auth_secret_key
+BETTER_AUTH_URL=http://localhost:3000
+
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+```
+
+**4. Run the development server**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 👨‍💻 Author
 
-## Learn More
+**Nahin Ahmed**
 
-To learn more about Next.js, take a look at the following resources:
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nahin-ahmed-bd/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/nahin113)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat&logo=vercel&logoColor=white)](https://nahinahmed.vercel.app)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+This project is open source and available under the [MIT License](./LICENSE).
