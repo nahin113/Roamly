@@ -16,27 +16,29 @@ import BookNowCard from "@/components/BookNowCard";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
-
 const DestinationDetailsPage = async ({ params }) => {
   const { id } = await params;
 
   // get token
   const { token } = await auth.api.getToken({
-    headers : await headers()
-  })
-  console.log(token)
+    headers: await headers(),
+  });
+  console.log(token);
 
   // Fetch data
-  const res = await fetch(`http://localhost:1003/destination/${id}`, {
-    headers : {
-      authorization : `Bearer ${token}`
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`,
+    {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
     }
-  });
+  );
   const destination = await res.json();
 
   // Fallback mock data to match your screenshot perfectly while you wire up your DB
   const mockData = {
-    id : destination?._id,
+    id: destination?._id,
     imageUrl: destination?.imageUrl || "/placeholder-hero.jpg", // Ensure this exists or use external URL
     country: destination?.country || "Indonesia",
     title: destination?.destinationName || "Bali Paradise",
@@ -55,7 +57,6 @@ const DestinationDetailsPage = async ({ params }) => {
       "Sunrise trek to Mount Batur",
     ],
   };
-  
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 w-full bg-white min-h-screen">
@@ -145,7 +146,7 @@ const DestinationDetailsPage = async ({ params }) => {
         </div>
 
         {/* Right Column: Sticky Booking Widget */}
-          <BookNowCard mockData = {mockData}></BookNowCard>
+        <BookNowCard mockData={mockData}></BookNowCard>
       </div>
     </div>
   );

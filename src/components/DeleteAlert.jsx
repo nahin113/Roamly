@@ -6,12 +6,15 @@ import { redirect } from "next/navigation";
 
 export function DeleteAlert({ destination}) {
     const handleDelete = async ()=> {
-        const res = await fetch(`http://localhost:1003/destination/${destination._id}`, {
-            method : "DELETE",
-            headers : {
-                "content-type" : "application.json"
-            }
-        });
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${destination?._id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "content-type": "application.json",
+            },
+          }
+        );
         const data = await res.json()
         console.log(data)
         redirect('/destinations')
@@ -46,7 +49,7 @@ export function DeleteAlert({ destination}) {
               <p className="text-gray-500 leading-relaxed">
                 Are you sure you want to delete{" "}
                 <strong className="text-gray-900 font-bold">
-                  "{destination.destinationName}"
+                  "{destination?.destinationName}"
                 </strong>
                 ? This action cannot be undone and will permanently remove this
                 travel package from the system.

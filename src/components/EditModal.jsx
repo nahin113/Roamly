@@ -21,7 +21,7 @@ export function EditModal({ destination }) {
     const destinationData = Object.fromEntries(formData.entries());
 
     const res = await fetch(
-      `http://localhost:1003/destination/${destination._id}`,
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${destination?._id}`,
       {
         method: "PATCH",
         headers: {
@@ -71,7 +71,7 @@ export function EditModal({ destination }) {
                     <div className="md:col-span-2">
                       <TextField
                         name="destinationName"
-                        defaultValue={destination.destinationName}
+                        defaultValue={destination?.destinationName}
                         isRequired
                       >
                         <Input className="rounded-sm bg-gray-50/80 border-none shadow-none h-11" />
@@ -82,7 +82,7 @@ export function EditModal({ destination }) {
                     {/* Country */}
                     <TextField
                       name="country"
-                      defaultValue={destination.country}
+                      defaultValue={destination?.country}
                       isRequired
                     >
                       <Label className="font-semibold text-gray-800 mb-1 text-sm">
@@ -98,7 +98,7 @@ export function EditModal({ destination }) {
                         name="category"
                         isRequired
                         className="w-full"
-                        defaultValue={destination.category}
+                        defaultValue={destination?.category}
                       >
                         <Label className="font-semibold text-gray-800 mb-1 text-sm">
                           Category
@@ -133,7 +133,7 @@ export function EditModal({ destination }) {
                     <TextField
                       name="price"
                       type="number"
-                      defaultValue={destination.price}
+                      defaultValue={destination?.price}
                       isRequired
                     >
                       <Label className="font-semibold text-gray-800 mb-1 text-sm">
@@ -149,7 +149,7 @@ export function EditModal({ destination }) {
                     {/* Duration */}
                     <TextField
                       name="duration"
-                      defaultValue={destination.duration}
+                      defaultValue={destination?.duration}
                       isRequired
                     >
                       <Label className="font-semibold text-gray-800 mb-1 text-sm">
@@ -164,7 +164,7 @@ export function EditModal({ destination }) {
                       <TextField
                         name="departureDate"
                         type="text"
-                        defaultValue={destination.departureDate}
+                        defaultValue={destination?.departureDate}
                         isRequired
                       >
                         <Label className="font-semibold text-gray-800 mb-1 text-sm">
@@ -182,7 +182,7 @@ export function EditModal({ destination }) {
                     <div className="md:col-span-2">
                       <TextField
                         name="imageUrl"
-                        defaultValue={destination.imageUrl}
+                        defaultValue={destination?.imageUrl}
                         isRequired
                       >
                         <Label className="font-semibold text-gray-800 mb-1 text-sm">
@@ -200,7 +200,7 @@ export function EditModal({ destination }) {
                     <div className="md:col-span-2">
                       <TextField
                         name="description"
-                        defaultValue={destination.description}
+                        defaultValue={destination?.description}
                         isRequired
                       >
                         <Label className="font-semibold text-gray-800 mb-1 text-sm">

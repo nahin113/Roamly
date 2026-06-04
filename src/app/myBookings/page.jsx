@@ -9,12 +9,24 @@ import { BookingCancelAlert } from "@/components/BookingCancelAlert";
 const MyBookingPage = async () => {
     const session = await auth.api.getSession({headers : await headers()})
     const user =  session?.user
-    const res = await fetch(`http://localhost:1003/booking/${user?.id}`);
+
+
+      const { token } = await auth.api.getToken({
+        headers: await headers(),
+      });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${user?.id}`,
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
     const data = await res.json()
     console.log(data)
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 min-h-screen bg-white">
-      {/* Page Header */}
+
       <div className="mb-8">
         <h1 className="text-4xl font-semibold text-gray-900 tracking-tight">
           My Bookings
@@ -24,14 +36,14 @@ const MyBookingPage = async () => {
         </p>
       </div>
 
-      {/* Bookings Container Grid */}
+     
       <div className="flex flex-col gap-5">
         {data.map((booking) => (
           <Card
             key={booking._id}
             className="p-5 border border-gray-100 shadow-sm bg-white rounded-md flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-md transition-shadow"
           >
-            {/* Left Side Grouping: Image and Content metadata */}
+          
             <div className="flex flex-col sm:flex-row items-start gap-5 w-full md:w-auto">
               {/* Destination Crop Wrapper */}
               <div className="relative w-full sm:w-[240px] h-[135px] shrink-0 rounded-sm overflow-hidden">

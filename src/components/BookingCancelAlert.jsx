@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { Trash2, AlertCircle } from "lucide-react";
 import { redirect } from "next/navigation";
@@ -7,21 +8,22 @@ import { toast } from "react-hot-toast";
 
 export function BookingCancelAlert({ booking }) {
   const handleDelete = async () => {
+    const { data: tokenData } = await authClient.token();
     const res = await fetch(
-      `http://localhost:1003/booking/${booking._id}`,
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${booking._id}`,
       {
         method: "DELETE",
         headers: {
           "content-type": "application.json",
+          authorization: `Bearer ${tokenData?.token}`,
         },
       }
     );
     const data = await res.json();
-    if(data.acknowledged) {
-        toast("Booking Canceled")
-        redirect("/myBookings");
-    }
-    else toast("Try Again")
+    if (data.acknowledged) {
+      toast("Booking Canceled");
+      redirect("/myBookings");
+    } else toast("Try Again");
   };
   return (
     <AlertDialog>

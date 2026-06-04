@@ -24,12 +24,17 @@ const BookNowCard = ({mockData}) => {
           departureDate : new Date(departureDate)
       }
 
-      const res = await fetch("http://localhost:1003/booking", {
-        method : "POST",
-        headers : {
-            'content-type' : 'application/json'
+      // send token to backend in client component
+      const { data : tokenData } = await authClient.token()
+      console.log(tokenData.token)
+
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
         },
-        body : JSON.stringify(bookingData)
+        body: JSON.stringify(bookingData),
       });
       const data = await res.json()
       console.log(data)
