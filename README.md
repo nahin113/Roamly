@@ -19,8 +19,8 @@ Whether you're a traveler hunting for the next adventure or a developer looking 
 
 ## Screenshots
 
-| Home Page | Dashboard |
-|-----------|-----------|
+| Home Page | 
+|-----------|
 | ![Home](./screenshot.png)
 
 >  **Demo walkthrough:**
