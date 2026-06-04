@@ -3,8 +3,9 @@ import DestinationCard from "@/components/DestinationCard";
 
 const DestinationsPage = async () => {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/destination`
-    );
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/destination`,{
+    cache: "no-store",
+  });
     const destinationsData = await res.json()
     return (
         <div className="container mx-auto">

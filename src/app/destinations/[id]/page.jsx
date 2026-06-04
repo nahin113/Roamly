@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Button, Card } from "@heroui/react";
 import {
   ArrowLeft,
-  Trash2, // Using Trash2 for the cancel/delete icon
   MapPin,
   Star,
   Calendar,
