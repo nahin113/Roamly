@@ -14,71 +14,16 @@ import {
 } from "lucide-react";
 
 
-const defaultDestinations = [
-  {
-    _id: "6a061e0b273df41ad77d7ad2",
-    destinationName: "Bali Paradise",
-    country: "Indonesia",
-    category: "Beach",
-    price: "1299",
-    duration: "6 Days / 5 Nights",
-    departureDate: "2026-05-15",
-    imageUrl:
-      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80",
-    description: "Bali Paradise represents the ultimate tropical escape...",
-  },
-  {
-    _id: "6a061ead4898484c720536e3",
-    destinationName: "Everest Base Camp Trek",
-    country: "Nepal",
-    category: "Adventure",
-    price: "1899",
-    duration: "14 Days / 13 Nights",
-    departureDate: "2026-10-01",
-    imageUrl:
-      "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80",
-    description:
-      "Everest Base Camp Trek takes you through the legendary Himalayas...",
-  },
-  {
-    _id: "6a061ead4898484c720536e4",
-    destinationName: "Tokyo City Explorer",
-    country: "Japan",
-    category: "City",
-    price: "3199",
-    duration: "10 Days / 9 Nights",
-    departureDate: "2026-09-20",
-    imageUrl:
-      "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80",
-    description:
-      "Tokyo City Explorer immerses you in Japan's electric capital...",
-  },
-  {
-    _id: "6a061ead4898484c720536e6",
-    destinationName: "Maldives Overwater Luxury",
-    country: "Maldives",
-    category: "Luxury",
-    price: "6999",
-    duration: "6 Days / 5 Nights",
-    departureDate: "2026-12-20",
-    imageUrl:
-      "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80",
-    description:
-      "Maldives Overwater Luxury places you in a private bungalow suspended over the crystal-clear Indian Ocean...",
-  },
-];
-
 export default function Featured({ destinations }) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Responsive logic: items visible at once (Desktop: 3, Tablet: 2, Mobile: 1)
-  const totalItems = defaultDestinations.length;
+  const totalItems = destinations.length;
 
   const nextSlide = () => {
     if (currentIndex < totalItems - 1) {
       setCurrentIndex((prev) => prev + 1);
     } else {
-      setCurrentIndex(0); // Loop back to the start safely
+      setCurrentIndex(0); 
     }
   };
 
@@ -86,7 +31,7 @@ export default function Featured({ destinations }) {
     if (currentIndex > 0) {
       setCurrentIndex((prev) => prev - 1);
     } else {
-      setCurrentIndex(totalItems - 1); // Loop to the end safely
+      setCurrentIndex(totalItems - 1); 
     }
   };
 
@@ -120,7 +65,7 @@ export default function Featured({ destinations }) {
           className="flex gap-6 transition-transform duration-500 ease-out"
           style={{ transform: `translateX(calc(-${currentIndex * 100}% / 3))` }}
         >
-          {defaultDestinations.map((item) => (
+          {destinations.map((item) => (
             <div
               key={item._id}
               className="w-full sm:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0"
@@ -189,38 +134,61 @@ export default function Featured({ destinations }) {
           ))}
         </div>
       </div>
-
-      {/* 3. Slider Step Pagination & Controls Block (Matches Screenshot Bottom Footer Perfectly) */}
-      <div className="flex items-center justify-between border-t border-gray-100 pt-5 mt-6">
-        {/* Dynamic Display Index Counter step logic */}
-        <div className="text-sm font-semibold text-gray-800 tracking-wide">
-          {currentIndex + 1}/{totalItems}
-        </div>
-
-        {/* Carousel Chevron Action Buttons */}
-        <div className="flex items-center gap-3">
-          <Button
-            isIconOnly
-            radius="full"
-            variant="bordered"
-            onPress={prevSlide}
-            className="w-10 h-10 min-w-none border-gray-200 text-gray-500 hover:bg-gray-50"
-            aria-label="Previous step"
-          >
-            <ChevronLeft size={18} />
-          </Button>
-          <Button
-            isIconOnly
-            radius="full"
-            variant="bordered"
-            onPress={nextSlide}
-            className="w-10 h-10 min-w-none border-gray-200 text-gray-500 hover:bg-gray-50"
-            aria-label="Next step"
-          >
-            <ChevronRight size={18} />
-          </Button>
-        </div>
-      </div>
     </section>
   );
 }
+
+
+// const defaultDestinations = [
+//   {
+//     _id: "6a061e0b273df41ad77d7ad2",
+//     destinationName: "Bali Paradise",
+//     country: "Indonesia",
+//     category: "Beach",
+//     price: "1299",
+//     duration: "6 Days / 5 Nights",
+//     departureDate: "2026-05-15",
+//     imageUrl:
+//       "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80",
+//     description: "Bali Paradise represents the ultimate tropical escape...",
+//   },
+//   {
+//     _id: "6a061ead4898484c720536e3",
+//     destinationName: "Everest Base Camp Trek",
+//     country: "Nepal",
+//     category: "Adventure",
+//     price: "1899",
+//     duration: "14 Days / 13 Nights",
+//     departureDate: "2026-10-01",
+//     imageUrl:
+//       "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80",
+//     description:
+//       "Everest Base Camp Trek takes you through the legendary Himalayas...",
+//   },
+//   {
+//     _id: "6a061ead4898484c720536e4",
+//     destinationName: "Tokyo City Explorer",
+//     country: "Japan",
+//     category: "City",
+//     price: "3199",
+//     duration: "10 Days / 9 Nights",
+//     departureDate: "2026-09-20",
+//     imageUrl:
+//       "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80",
+//     description:
+//       "Tokyo City Explorer immerses you in Japan's electric capital...",
+//   },
+//   {
+//     _id: "6a061ead4898484c720536e6",
+//     destinationName: "Maldives Overwater Luxury",
+//     country: "Maldives",
+//     category: "Luxury",
+//     price: "6999",
+//     duration: "6 Days / 5 Nights",
+//     departureDate: "2026-12-20",
+//     imageUrl:
+//       "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80",
+//     description:
+//       "Maldives Overwater Luxury places you in a private bungalow suspended over the crystal-clear Indian Ocean...",
+//   },
+// ];

@@ -5,6 +5,7 @@ import { Calendar, Eye, Trash2 } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { BookingCancelAlert } from "@/components/BookingCancelAlert";
+import Link from "next/link";
 
 const MyBookingPage = async () => {
     const session = await auth.api.getSession({headers : await headers()})
@@ -26,7 +27,6 @@ const MyBookingPage = async () => {
     console.log(data)
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 min-h-screen bg-white">
-
       <div className="mb-8">
         <h1 className="text-4xl font-semibold text-gray-900 tracking-tight">
           My Bookings
@@ -36,14 +36,12 @@ const MyBookingPage = async () => {
         </p>
       </div>
 
-     
       <div className="flex flex-col gap-5">
         {data.map((booking) => (
           <Card
             key={booking._id}
             className="p-5 border border-gray-100 shadow-sm bg-white rounded-md flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:shadow-md transition-shadow"
           >
-          
             <div className="flex flex-col sm:flex-row items-start gap-5 w-full md:w-auto">
               {/* Destination Crop Wrapper */}
               <div className="relative w-full sm:w-[240px] h-[135px] shrink-0 rounded-sm overflow-hidden">
@@ -124,11 +122,10 @@ const MyBookingPage = async () => {
                 <Button
                   variant="solid"
                   size="md"
-                //   onPress={() => handleViewDetails(booking._id)}
-                  className="bg-[#1FB6CD] text-white hover:bg-[#1da4b9] font-medium h-9 px-4 rounded-sm shadow-none"
+                  className="bg-[#1FB6CD]  hover:bg-[#1da4b9] h-9 px-4 rounded-sm shadow-none"
                   startContent={<Eye size={15} />}
                 >
-                  View
+                  <Link className="text-white font-medium no-underline" href={`/destinations/${booking._id}`}>View</Link>
                 </Button>
               </div>
             </div>
