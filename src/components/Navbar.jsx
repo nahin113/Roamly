@@ -31,8 +31,8 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link className="no-underline" href="#">
-                Admin
+              <Link className="no-underline" href="/addDestination">
+                Add Destination
               </Link>
             </li>
           </ul>
@@ -47,7 +47,7 @@ const Navbar = () => {
           </div>
           <ul className="flex items-center gap-4">
             <li>
-              <Link href="#" className="no-underline">
+              <Link href="/myProfile" className="no-underline">
                 Profile
               </Link>
             </li>

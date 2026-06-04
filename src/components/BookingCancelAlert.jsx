@@ -21,9 +21,9 @@ export function BookingCancelAlert({ booking }) {
     );
     const data = await res.json();
     if (data.acknowledged) {
-      toast("Booking Canceled");
+      toast.error("Booking Canceled");
       redirect("/myBookings");
-    } else toast("Try Again");
+    } else toast.error("Try Again");
   };
   return (
     <AlertDialog>

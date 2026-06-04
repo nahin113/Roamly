@@ -3,6 +3,7 @@
 import { AlertDialog, Button } from "@heroui/react";
 import { Trash2, AlertCircle } from "lucide-react";
 import { redirect } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 export function DeleteAlert({ destination}) {
     const handleDelete = async ()=> {
@@ -16,8 +17,11 @@ export function DeleteAlert({ destination}) {
           }
         );
         const data = await res.json()
-        console.log(data)
-        redirect('/destinations')
+        if (data.acknowledged)
+        {
+          toast.success("Destination Deleted")
+          redirect("/destinations");
+        } 
     }
   return (
     <AlertDialog>

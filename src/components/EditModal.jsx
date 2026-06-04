@@ -12,9 +12,14 @@ import {
   FieldError,
   TextArea, // Assuming this is exported in your setup based on your previous code
 } from "@heroui/react";
+import { useState } from "react";
 import { Trash2, Save, Pencil } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 export function EditModal({ destination }) {
+  const router = useRouter()
+  const [isOpen, setIsOpen] = useState(false);
   const handleDestination = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -32,10 +37,16 @@ export function EditModal({ destination }) {
     );
     const data = await res.json();
     console.log(data);
+    if (data.acknowledged) 
+    {
+      toast.success("Destination Edit Successful");
+      setIsOpen(false);
+    }
+    router.refresh()
   };
 
   return (
-    <Modal>
+    <Modal isOpen={isOpen} onOpenChange={setIsOpen}>
       <Button
         variant="bordered"
         startContent={<Pencil size={16} />}

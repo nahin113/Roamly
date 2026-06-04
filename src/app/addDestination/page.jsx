@@ -9,8 +9,11 @@ import {
   Select,
   TextField,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 const AddDestinationPage = () => {
+  const router = useRouter();
   const handleDestination = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -26,8 +29,12 @@ const AddDestinationPage = () => {
         body: JSON.stringify(destination),
       }
     );
-    const data = res.json();
-    console.log(data);
+    const data = await res.json();
+    console.log(data)
+    if (data.acknowledged) {
+      toast.success("Destination Added");
+      router.push("/destinations");
+    }
   };
   return (
     <div className="container mx-auto">
