@@ -12,7 +12,6 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { destinationFeatured } from "@/lib/actions";
 
 
 const defaultDestinations = [
@@ -73,7 +72,7 @@ export default function Featured({ destinations }) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
   // Responsive logic: items visible at once (Desktop: 3, Tablet: 2, Mobile: 1)
-  const totalItems = destinations.length;
+  const totalItems = defaultDestinations.length;
 
   const nextSlide = () => {
     if (currentIndex < totalItems - 1) {
@@ -121,7 +120,7 @@ export default function Featured({ destinations }) {
           className="flex gap-6 transition-transform duration-500 ease-out"
           style={{ transform: `translateX(calc(-${currentIndex * 100}% / 3))` }}
         >
-          {destinations.map((item) => (
+          {defaultDestinations.map((item) => (
             <div
               key={item._id}
               className="w-full sm:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0"
