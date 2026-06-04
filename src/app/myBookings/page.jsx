@@ -125,7 +125,7 @@ const MyBookingPage = async () => {
                   className="bg-[#1FB6CD]  hover:bg-[#1da4b9] h-9 px-4 rounded-sm shadow-none"
                   startContent={<Eye size={15} />}
                 >
-                  <Link className="text-white font-medium no-underline" href={`/destinations/${booking._id}`}>View</Link>
+                  <Link className="text-white font-medium no-underline" href={`/destinations/${booking.destinationId}`}>View</Link>
                 </Button>
               </div>
             </div>
