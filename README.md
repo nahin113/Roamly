@@ -24,7 +24,7 @@ Whether you're a traveler hunting for the next adventure or a developer looking 
 | ![Home](./screenshot.png)
 
 >  **Demo walkthrough:**
-> ![Demo GIF](./assets/demo.gif)
+> ![Demo GIF](./public/assets/demo.gif)
 
 ---
 
